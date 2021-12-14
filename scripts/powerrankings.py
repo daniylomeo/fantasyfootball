@@ -20,10 +20,10 @@ def get_power_rankings(df_points):
     df_points['DistanceAdj'] = df_points['DistanceAdj'] + average_pf
 
     #normalizing scores on a 0 to 100 scale
-    df_points['Score'] = (df_points['DistanceAdj'] / df_points['DistanceAdj'].max()) * 100
+    df_points['Ranking'] = (df_points['DistanceAdj'] / df_points['DistanceAdj'].max()) * 100
 
     #order in first to last
-    df_points.sort_values('Score', inplace=True, ascending=False)
+    df_points.sort_values('Ranking', inplace=True, ascending=False)
     df_final = df_points.drop(columns=['PointsFor','PointsAgainst','Week','PointDiff','Distance','DistanceAdj'])
     df_final.to_csv('rankings.csv', index=False)
 
